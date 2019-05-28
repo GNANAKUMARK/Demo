@@ -12,9 +12,12 @@ import com.ing.dao.BreachDAO;
 import com.ing.entity.Breach;
 import com.ing.request.SaveIncidentRequest;
 import com.ing.request.UpdateBreachRequest;
+import com.ing.utility.UtilConstants;
 
 @Service
 public class BreachServiceImpl implements BreachService	 	 {
+	
+	
 	@Autowired
 	BreachDAO repo;
 	
@@ -25,6 +28,7 @@ public class BreachServiceImpl implements BreachService	 	 {
 		Breach breach = new Breach();
 		try {
 			BeanUtils.copyProperties(breach, request);
+			breach.setStatus(UtilConstants.STATUS_CREATED);
 			breach = repo.save(breach);
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
