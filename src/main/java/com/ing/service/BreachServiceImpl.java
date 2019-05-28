@@ -1,6 +1,7 @@
 package com.ing.service;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.ing.dao.BreachDAO;
 import com.ing.entity.Breach;
+import com.ing.repository.SearchRepoIntf;
 import com.ing.request.SaveIncidentRequest;
 import com.ing.request.UpdateBreachRequest;
 import com.ing.utility.UtilConstants;
@@ -20,6 +22,9 @@ public class BreachServiceImpl implements BreachService	 	 {
 	
 	@Autowired
 	BreachDAO repo;
+	
+	@Autowired
+	SearchRepoIntf searchRepoIntf;
 	
 	@Override
 	@Transactional
@@ -50,6 +55,10 @@ public class BreachServiceImpl implements BreachService	 	 {
 
 	}
 	
-	
+	@Override
+	 public List<Breach> searchIncident() {
+	  // TODO Auto-generated method stub
+	  return searchRepoIntf.findAllIncidents();
+	 }
 
 }
