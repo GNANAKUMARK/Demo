@@ -7,10 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="Breach_Complaince")
+@NamedQuery(name="Breach.updateIncident",query="update Breach b set b.status= :status , b.updatedBy=:updatedBy where b.id=:breachId")
 public class Breach implements Serializable {
 	
 	/**
